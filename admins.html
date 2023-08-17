@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Admin - FWG</title>
+    <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="dist/img/favi.ico">
+    <link rel="icon" href="dist/img/favi.ico" type="image/x-icon">
+
+    <!-- Morris Charts CSS -->
+    <link href="dist/vendors4/morris.js/morris.css" rel="stylesheet" type="text/css" />
+
+    <!-- Data Table CSS -->
+    <link href="dist/vendors4/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="dist/vendors4/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet"
+        type="text/css" />
+
+    <!-- Toggles CSS -->
+    <link href="dist/vendors4/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="dist/vendors4/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+
+    <!-- Toastr CSS -->
+    <link href="dist/vendors4/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Pace -->
+    <link rel="stylesheet" href="dist/vendors4/pace-progress/themes/blue/pace-theme-minimal.css">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="dist/css/fontawesome-free/css/all.min.css">
+</head>
+
+<body>
+    <!-- HK Wrapper -->
+    <div class="hk-wrapper hk-vertical-nav">
+
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand-xl navbar-light fixed-top hk-navbar">
+            <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i
+                    class="ion ion-ios-menu"></i></a>
+            <a class="navbar-brand" href="admin.html">
+                <img class="brand-img d-inline-block mr-5" src="dist/img/ico.png" alt="brand" />&nbsp; Fitness With
+                Gomzi
+            </a>
+            <ul class="navbar-nav hk-navbar-content" id="ui_header_profile"></ul>
+        </nav>
+        <!-- /Top Navbar -->
+
+        <!--Vertical Nav-->
+        <div id="navHTML"></div>
+        <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
+        <!--/Vertical Nav-->
+
+        <!-- Main Content -->
+        <div class="hk-pg-wrapper">
+            <div class="container-fluid">
+                <div class="container content-header">
+                    <div class="row mt-15 mb-15 align-items-center">
+                        <div class="col-md-6">
+                            <h1>All Admin</h1>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Breadcrumb -->
+                            <nav class="hk-breadcrumb" aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-transparent float-sm-right mb-0">
+                                    <li class="breadcrumb-item"><a href="admin.html">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Admin</li>
+                                </ol>
+                            </nav>
+                            <!-- /Breadcrumb -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Container -->
+            <div class="container-fluid">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!-- Wrapper -->
+                        <section class="hk-sec-wrapper">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <table id="tbl_admin"
+                                            class="mt-15 table table-bordered table-striped display pb-30"
+                                            style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Full name</th>
+                                                    <th>Email</th>
+                                                    <th>Mobile no.</th>
+                                                    <th>Type</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr align="center">
+                                                    <td colspan="6"><img src="dist/img/loader.gif" style="width:30px">
+                                                    </td>
+                                                    <td hidden></td>
+                                                    <td hidden></td>
+                                                    <td hidden></td>
+                                                    <td hidden></td>
+                                                    <td hidden></td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Full name</th>
+                                                    <th>Email</th>
+                                                    <th>Mobile no.</th>
+                                                    <th>Type</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- /Row -->
+            </div>
+            <!-- /Container -->
+
+            <!-- Footer -->
+            <div class="hk-footer-wrap container">
+                <footer class="footer">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <p>Copyright &copy
+                                <a href="https://fgdigitals.com" target="_blank">FG Digital</a>&nbsp;Powered by<a
+                                    href="https://fitnesswithgomzi.com" target="_blank">Fitness With Gomzi</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </footer>
+            </div>
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    <script src="dist/vendors4/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="dist/vendors4/popper.js/dist/umd/popper.min.js"></script>
+    <script src="dist/vendors4/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="dist/js/jquery.slimscroll.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="dist/js/feather.min.js"></script>
+
+    <!-- Toggles JavaScript -->
+    <script src="dist/vendors4/jquery-toggles/toggles.min.js"></script>
+    <script src="dist/js/toggle-data.js"></script>
+
+    <!-- Toastr JS -->
+    <script src="dist/vendors4/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+    <script src="dist/js/toast-data.js"></script>
+
+    <!-- Counter Animation JavaScript -->
+    <script src="dist/vendors4/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="dist/vendors4/jquery.counterup/jquery.counterup.min.js"></script>
+
+    <!-- Data Table JavaScript -->
+    <script src="dist/vendors4/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="dist/vendors4/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="dist/vendors4/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="dist/vendors4/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="dist/vendors4/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="dist/vendors4/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="dist/vendors4/jszip/dist/jszip.min.js"></script>
+    <script src="dist/vendors4/pdfmake/build/pdfmake.min.js"></script>
+    <script src="dist/vendors4/pdfmake/build/vfs_fonts.js"></script>
+    <script src="dist/vendors4/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="dist/vendors4/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="dist/vendors4/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="dist/js/dataTables-data.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="dist/vendors4/raphael/raphael.min.js"></script>
+    <script src="dist/vendors4/morris.js/morris.min.js"></script>
+
+    <!-- Easy pie chart JS -->
+    <script src="dist/vendors4/easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+
+    <!-- Apex JavaScript -->
+    <!-- <script src="dist/vendors4/apexcharts/dist/apexcharts.min.js"></script> -->
+
+    <!-- EChartJS JavaScript -->
+    <script src="dist/vendors4/echarts/dist/echarts-en.min.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="dist/js/init.js"></script>
+    <script src="dist/js/dashboard2-data.js"></script>
+
+    <!-- Pace -->
+    <script src="dist/vendors4/pace-progress/pace.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="dist/app.js"></script>
+    <script src="dist/menu-items.js"></script>
+
+    <!-- Authorization -->
+    <script src="dist/authorization.js"></script>
+</body>
+<script>
+    var tblAdmin = $('#tbl_admin').DataTable({
+        responsive: true,
+        paging: false,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search...",
+            "sLengthMenu": "Show _MENU_ Records",
+        },
+        "dom": '<"row"<"#idid.col-7"><"col-5"fl><"col-12"rt><"col-12">><"row"<"col-12"ip>><"clear">',
+        "columns": [{
+            "width": "7%"
+        }, {
+            "width": "20%"
+        }, {
+            "width": "25%"
+        }, {
+            "width": "15%"
+        },
+            null, {
+            "width": "15%"
+        },
+        ]
+    });
+
+    // Add content to col-7
+    $('#idid').html(
+        '<div class="">' +
+        '<a class="btn mb-2 text-white" style="background-color: #0854ff;" href="admin-add.html"><i class="fa fa-plus"></i>&nbsp; Create</a>' +
+        '</div>');
+    $(document).ready(() => {
+        getAdmins()
+    });
+
+    function getAdmins() {
+        $.get({
+            url: BASE_URL + '/get-admins',
+            success: (result) => {
+                tblAdmin.clear().draw();
+                var result = result.data;
+                if (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        var tempAdmin = result[i];
+                        var button = `<button class='btn btn-primary' onclick="window.location.href ='admin-view.html?admin_id=${tempAdmin._id}'"><i class="fa fa-eye"></i> View</button>`
+                        var type
+                        if (tempAdmin.type == "MASTER") {
+                            type = '<p class="text-success"><i class="fa fa-check"></i> Master Admin</p>'
+                        } else {
+                            type = '<p class="text-success"> Sub Admin</p>'
+                        }
+                        tblAdmin.row.add([
+                            `${i + 1}`, tempAdmin.full_name, tempAdmin.email, tempAdmin.mobile, type, button
+                        ]).draw();
+                    }
+                }
+            },
+            error: (error) => {
+                return error.responseJSON ? toastError('Error', error.responseJSON.message) : toastError();
+            }
+        });
+    }
+</script>
+
+</html>
