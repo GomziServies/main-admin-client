@@ -1,4 +1,4 @@
-let HOST;
+let HOST = 'api-all-admins.gcsconsultant.com';
 // HOST = 'http://localhost'
 
 if (['dev-all-admins.gcsconsultant.com'].includes(window.location.hostname)) {
