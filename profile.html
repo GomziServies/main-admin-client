@@ -216,7 +216,7 @@
 
     function getAdmin() {
         $.get({
-            url: 'api-all-admins.gcsconsultant.com/admin/get-profile',
+            url: BASE_URL + '/get-profile',
             success: (result) => {
                 var result = result.data;
 

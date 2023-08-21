@@ -152,7 +152,7 @@
         }
 
         $.post({
-            url: 'api-all-admins.gcsconsultant.com/admin/login',
+            url: BASE_URL + '/login',
             contentType: 'application/json',
             data: JSON.stringify({
                 "email": email,
@@ -163,7 +163,7 @@
                 localStorage.setItem("authorization", result.authorization);
                 // get profile
                 $.get({
-                    url: `api-all-admins.gcsconsultant.com/admin/get-profile`,
+                    url: `${BASE_URL}/get-profile`,
                     dataType: 'json',
                     headers: {
                         "authorization": `${result.authorization}`,
