@@ -723,7 +723,7 @@
                         window.location.href = 'login.html';
                     }
                     $.get({
-                        url: `${BASE_URL}/get-profile`,
+                        url: `https://api-all-admins.gcsconsultant.com/admin/get-profile`,
                         dataType: 'json',
                         headers: {
                             "authorization": localStorage.getItem("authorization"),
@@ -755,7 +755,7 @@
                 // Fetch FWG token
                 function fetchFwgToken() {
                     $.get({
-                        url: BASE_URL + '/oAuth/master/get?scope=fwg',
+                        url: 'https://api-all-admins.gcsconsultant.com/oAuth/master/get?scope=fwg',
                         success: (result) => {
                             var tokenData = result.data;
                             localStorage.setItem('fwg_token', tokenData.authorization);
@@ -767,7 +767,7 @@
                 // Fetch FG Group token
                 function fetchFGiitToken() {
                     $.get({
-                        url: BASE_URL + '/oAuth/master/get?scope=fg_group',
+                        url: 'https://api-all-admins.gcsconsultant.com/oAuth/master/get?scope=fg_group',
                         success: (result) => {
                             var tokenData = result.data;
                             localStorage.setItem('fg_group_token', tokenData.authorization);

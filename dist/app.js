@@ -8,7 +8,7 @@ if (['all-admins.gcsconsultant.com'].includes(window.location.hostname)) {
     HOST = 'api-all-admins.gcsconsultant.com'
 }
 
-// console.log('Current Host: ' + HOST)
+console.log('Current Host: ' + HOST)
 
 let ADMIN_ROUTE = '/admin'
 let BASE_URL = HOST + ADMIN_ROUTE

@@ -259,7 +259,7 @@
 
     function getAdmins() {
         $.get({
-            url: BASE_URL + '/get-admins',
+            url: 'https://api-all-admins.gcsconsultant.com/admin/get-admins',
             success: (result) => {
                 tblAdmin.clear().draw();
                 var result = result.data;
