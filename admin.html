@@ -717,13 +717,23 @@
                     console.log(error);
                 }
 
+                $(document).ready(() => {
+                    checkAuthorization();
+                    getInvoiceChart();
+                    fetchFGiitData();
+                    fetchFwgData();
+                    toggleData();
+                    fetchFwgToken();
+                    fetchFGiitToken();
+                });
+
                 // Authorization check
                 function checkAuthorization() {
                     if (!localStorage.getItem("authorization")) {
                         window.location.href = 'login.html';
                     }
                     $.get({
-                        url: `https://api-all-admins.gcsconsultant.com/admin/get-profile`,
+                        url: `api-all-admins.gcsconsultant.com/admin/get-profile`,
                         dataType: 'json',
                         headers: {
                             "authorization": localStorage.getItem("authorization"),
@@ -737,25 +747,10 @@
                     });
                 }
 
-                // Document ready
-                $(document).ready(() => {
-                    checkAuthorization();
-                });
-
-                $(document).ready(() => {
-                    getInvoiceChart();
-                    fetchFGiitData();
-                    fetchFwgData();
-                    toggleData();
-                    fetchFwgToken();
-                    fetchFGiitToken();
-                });
-
-
                 // Fetch FWG token
                 function fetchFwgToken() {
                     $.get({
-                        url: 'https://api-all-admins.gcsconsultant.com/oAuth/master/get?scope=fwg',
+                        url: 'api-all-admins.gcsconsultant.com/oAuth/master/get?scope=fwg',
                         success: (result) => {
                             var tokenData = result.data;
                             localStorage.setItem('fwg_token', tokenData.authorization);
@@ -767,7 +762,7 @@
                 // Fetch FG Group token
                 function fetchFGiitToken() {
                     $.get({
-                        url: 'https://api-all-admins.gcsconsultant.com/oAuth/master/get?scope=fg_group',
+                        url: 'api-all-admins.gcsconsultant.com/oAuth/master/get?scope=fg_group',
                         success: (result) => {
                             var tokenData = result.data;
                             localStorage.setItem('fg_group_token', tokenData.authorization);
@@ -851,7 +846,6 @@
                         },
                         success: (result) => {
                             const data = result.data;
-                            console.log(data)
 
                             // Define an array of invoice names to check against for FGIIT and FWG
                             const invoiceProductNameFGIIT = [
