@@ -743,19 +743,49 @@
                 });
 
                 $(document).ready(() => {
-                    getInvoiceChart();
-                    fetchFGiitData();
-                    fetchFwgData();
-                    toggleData();
-                    fetchFwgToken();
-                    fetchFGiitToken();
+                    regenerateTokenFGIIT();
+                    regenerateTokenFWG();
+                    setTimeout(fetchFGiitData, 2000);
+                    setTimeout(getInvoiceChart, 2000);
+                    setTimeout(fetchFwgData, 2000);
+                    setTimeout(toggleData, 2000);
                 });
 
 
-                // Fetch FWG token
-                function fetchFwgToken() {
-                    $.get({
-                        url: BASE_URL + '/oAuth/master/get?scope=fwg',
+                // // Fetch FWG token
+                // function fetchFwgToken() {
+                //     $.get({
+                //         url: BASE_URL + '/oAuth/master/get?scope=fwg',
+                //         success: (result) => {
+                //             var tokenData = result.data;
+                //             localStorage.setItem('fwg_token', tokenData.authorization);
+                //         },
+                //         error: handleError
+                //     });
+                // }
+
+                function regenerateTokenFGIIT() {
+                    $.post({
+                        url: BASE_URL + '/oAuth/master/regenerate',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            scope: "fg_group",
+                        }),
+                        success: (result) => {
+                            var tokenData = result.data;
+                            localStorage.setItem('fg_group_token', tokenData.authorization);
+                        },
+                        error: handleError
+                    });
+                }
+
+                function regenerateTokenFWG() {
+                    $.post({
+                        url: BASE_URL + '/oAuth/master/regenerate',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            scope: "fwg",
+                        }),
                         success: (result) => {
                             var tokenData = result.data;
                             localStorage.setItem('fwg_token', tokenData.authorization);
@@ -764,17 +794,18 @@
                     });
                 }
 
-                // Fetch FG Group token
-                function fetchFGiitToken() {
-                    $.get({
-                        url: BASE_URL + '/oAuth/master/get?scope=fg_group',
-                        success: (result) => {
-                            var tokenData = result.data;
-                            localStorage.setItem('fg_group_token', tokenData.authorization);
-                        },
-                        error: handleError
-                    });
-                }
+
+                // // Fetch FG Group token
+                // function fetchFGiitToken() {
+                //     $.get({
+                //         url: BASE_URL + '/oAuth/master/get?scope=fg_group',
+                //         success: (result) => {
+                //             var tokenData = result.data;
+                //             localStorage.setItem('fg_group_token', tokenData.authorization);
+                //         },
+                //         error: handleError
+                //     });
+                // }
 
                 // Fetch FWG data
                 function fetchFwgData() {
