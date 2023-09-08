@@ -948,6 +948,7 @@
                     checkAuthorization();
                     regenerateTokenFGIIT();
                     regenerateTokenFWG();
+                    regenerateTokenGCS();
                     setTimeout(fetchFGiitData, 2000);
                     setTimeout(fetchFwgData, 2000);
                     setTimeout(toggleData, 2000);
@@ -1003,6 +1004,21 @@
                         success: (result) => {
                             var tokenData = result.data;
                             localStorage.setItem('fwg_token', tokenData.authorization);
+                        },
+                        error: handleError
+                    });
+                }
+
+                function regenerateTokenGCS() {
+                    $.post({
+                        url: BASE_URL + '/oAuth/master/regenerate',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            scope: "gcs",
+                        }),
+                        success: (result) => {
+                            var tokenData = result.data;
+                            localStorage.setItem('gcs_token', tokenData.authorization);
                         },
                         error: handleError
                     });
@@ -1413,6 +1429,56 @@
                     });
                 }
 
+                function getDueAmountGcs(startDate, endDate, productType) {
+                    $.get({
+                        url: 'https://admin.gcsconsultant.com/admin/invoice/invoice-get-data',
+                        headers: {
+                            "authorization": localStorage.getItem("gcs_token"),
+                        },
+                        success: (result) => {
+                            const data = result.data;
+                            console.log(data)
+                            // Apply date filter to the fetched data
+                            const filteredData = data.filter((tempInvoice) => {
+                                const invoiceDate = moment(tempInvoice.date, 'YYYY-MM-DD');
+                                return invoiceDate.isBetween(startDate, endDate, null, '[]');
+                            });
+
+                            // Define an object of invoice product names for FGIIT and FWG with short names
+                            const invoiceProductNameGcs = {
+                                'Marketing Guru': 'Marketing Guru',
+                                'Portfolio Management Services': 'Portfolio Management Services',
+                                'Management Consultation': 'Management Consultation',
+                                'Business Management Course': 'Business Management Course',
+                                'Digital Marketing Course': 'Digital Marketing Course',
+                                'Stock Market Course': 'Stock Market Course',
+                                'Content Shoot & Edit': 'Content Shoot & Edit',
+                                'Graphic Designing': 'Graphic Designing',
+                                'Social Media Marketing': 'Social Media Marketing',
+                                'Website Designing & Development': 'Website Designing & Development',
+                                'Paid Advertisements': 'Paid Advertisements',
+                                'Content Writing': 'Content Writing',
+                                'SEO - Search Engine Optimization': 'SEO - Search Engine Optimization',
+                                'SEM - Search Engine Management': 'SEM - Search Engine Management',
+                                'GMB - Google My Business Profile Maintain': 'GMB - Google My Business Profile Maintain',
+                                'ERP Setup and Services': 'ERP Setup and Services',
+                                'Business Solution': 'Business Solution',
+                                'Logo Design': 'Logo Design',
+                                'Affordable Package': 'Affordable Package',
+                            };
+
+                            // Define the target object based on the selected product type
+                            const targetObject = productType === 'gcsData' ? invoiceProductNameGcs : invoiceProductNameGcs;
+
+                            // Process and display the data in your table
+                            displayDueAmounts(filteredData, targetObject, productType);
+                        },
+                        error: (error) => {
+                            return error.responseJSON ? toastError('Error', error.responseJSON.message) : toastError();
+                        }
+                    });
+                }
+
                 function displayDueAmounts(data, targetObject, productType) {
                     // Clear existing table data
                     tblInvoice.clear().draw();
@@ -1450,6 +1516,21 @@
 
                             // Update the total due amount
                             totalDueAmount += dueAmount;
+                        } else if (productType === 'gcsData') {
+                            let action = `<button type="button" class="btn btn-outline-success px-2 py-1" onclick="sendWhatsAppReminder('${tempInvoice.phoneNumber}','${tempInvoice.fullName}', '${dueAmount}')"><i class="fab fa-whatsapp font-18 mr-1"></i>Send</button>`
+
+                            // Add a new row to the DataTable with due amount
+                            tblInvoice.row.add([
+                                i + 1,
+                                tempInvoice.fullName,
+                                productName,
+                                tempInvoice.date,
+                                `₹ ${dueAmount.toLocaleString()} /-`,
+                                action
+                            ]).draw();
+
+                            // Update the total due amount
+                            totalDueAmount += dueAmount;
                         }
                     }
 
@@ -1458,6 +1539,8 @@
                         $("#txt_fwgDueAmount").text(`₹${totalDueAmount.toLocaleString()} /-`);
                     } else if (productType === 'fgiitData') {
                         $("#txt_fgiitDueAmount").text(`₹${totalDueAmount.toLocaleString()} /-`);
+                    } else {
+                        $("#txt_gcsDueAmount").text(`₹${totalDueAmount.toLocaleString()} /-`);
                     }
                 }
 
@@ -1480,7 +1563,7 @@
                     } else if (selectedValue === "gcsData") {
                         $('#fgiitAmount, #fwgAmount').hide()
                         $('#gcsAmount').show()
-                        // Handle other data if needed
+                        getDueAmountGcs(selectedStartDateDue, selectedEndDateDue, 'gcsData');
                     }
                 }
 
@@ -1565,8 +1648,7 @@ Team Gomzi`;
                     const formattedEndDate = endDate.format('YYYY-MM-DD');
 
                     $.get({
-                        url: 'http://localhost/admin/lead/',
-                        // url: BASE_URL + '/lead',
+                        url: BASE_URL + '/lead',
                         data: {
                             startDate: formattedStartDate,
                             endDate: formattedEndDate
