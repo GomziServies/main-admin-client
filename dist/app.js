@@ -8,8 +8,6 @@ let HOST = 'https://api-all-admins.gcsconsultant.com'
 //     HOST = 'api-all-admins.gcsconsultant.com'
 // }
 
-console.log('Current Host: ' + HOST)
-
 let ADMIN_ROUTE = '/admin'
 let BASE_URL = HOST + ADMIN_ROUTE
 

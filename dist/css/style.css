@@ -21686,13 +21686,13 @@ div.mce-menu .mce-menu-item-sep,
   font-family: nunito, sans-serif;
   font-weight: 500;
   color: #494949;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .table.table-bordered th {
   border-top: 1px solid #eaecec;
   border-bottom: 1px solid #eaecec;
-  font-size: 16px;
+  font-size: 14px;
   font-family: nunito, sans-serif;
   font-weight: 600;
   color: #000;
@@ -22096,7 +22096,7 @@ table.dataTable thead th,
 table.dataTable thead td,
 table.dataTable tbody th,
 table.dataTable tbody td {
-  padding: 8px 10px;
+  padding: 4px 10px;
 }
 
 table.dataTable thead td,
@@ -29882,8 +29882,8 @@ thead {
   display: inline-block;
   background: #ff9838;
   border-radius: 16px;
-  width: 105px;
-  height: 32px;
+  width: 90px;
+  height: 26px;
   position: relative;
   vertical-align: middle;
   transition: background 0.25s;
@@ -29899,8 +29899,8 @@ thead {
   background: linear-gradient(to bottom, #353535 0%, #3b3b3b 100%);
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   position: absolute;
   top: 4px;
   left: 4px;
@@ -29917,7 +29917,7 @@ thead {
 }
 
 .toggle-checkbox:checked + .toggle-switch:before {
-  left: 76px;
+  left: 69px;
 }
 
 .toggle-checkbox {
@@ -29933,7 +29933,7 @@ thead {
 
 #text-display {
   position: absolute;
-  top: 5px;
-  left: 35%;
+  top: 2px;
+  left: 24%;
   color: #000;
 }
